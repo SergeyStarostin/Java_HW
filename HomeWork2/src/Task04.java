@@ -1,3 +1,6 @@
+/*
+ 4) К калькулятору из предыдущего ДЗ добавить логирование.
+ */
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
