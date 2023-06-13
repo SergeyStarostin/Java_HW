@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-06-13T10:42:14.898378900Z</date>
+  <millis>1686652934898</millis>
+  <nanos>378900</nanos>
+  <sequence>0</sequence>
+  <logger>Task02</logger>
+  <level>INFO</level>
+  <class>Task02</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Заданный массив: </message>
+</record>
+</log>
