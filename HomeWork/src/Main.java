@@ -13,6 +13,7 @@ public class Main {
             System.out.println("1) Вычислить сумма чисел от 1 до n");
             System.out.println("2) Вывести все простые числа от 1 до 1000");
             System.out.println("3) Реализовать простой калькулятор");
+            System.out.println("4) Восстановить выражение до верного равенства");
             System.out.println("Ввыедите номер задачи: ");
             int tasks = in.nextInt();
             
@@ -25,6 +26,9 @@ public class Main {
                     break;
                 case 3:
                     Calculator();
+                    break;
+                case 4:
+                    SolutionExample("2? + ?5 = 69");
                     break;
             }
         }
@@ -87,5 +91,28 @@ public class Main {
             }
             System.out.println(num1 + " " + action + " " + num2 + " = " + result);
         }
+    }
+
+    public static boolean Validate(int first, int second , int result){
+        return first + second == result;
+    }
+
+    public static void SolutionExample(String expression){
+        String[] numbers = expression.split("=");
+        int resultExpression = Integer.parseInt(numbers[1].trim());
+        String[] leftExpression = numbers[0].trim().replaceFirst(" ","").replace("+","").split(" ");
+        boolean flag = false;
+        for (int i = 0; i < 10; i++) {
+            int first = Integer.parseInt(leftExpression[0].replace("?", String.valueOf(i)));
+            for (int j = 0; j < 10; j++) {
+                int second = Integer.parseInt(leftExpression[1].replace("?", String.valueOf(j)));
+                if(Validate(first,second,resultExpression)){
+                    System.out.println(first + " + " + second + " = " + resultExpression);
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        if (!flag) System.out.println("Решения нет");
     }
 }
