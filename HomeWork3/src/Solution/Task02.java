@@ -1,11 +1,11 @@
 package Solution;
 
 import java.util.ArrayList;
+
+public class Task02 {
 /* 
 Пусть дан произвольный список целых чисел, удалить из него четные числа.
 */
-public class Task02 {
-
     public static void RemoveEvenNumbers(String[] args) 
     {
         ArrayList<Integer> numbers = new ArrayList<>();
