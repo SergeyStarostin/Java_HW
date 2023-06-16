@@ -1,8 +1,10 @@
 import Solution.Task01;
+import Solution.Task02;
 
 public class Main {
     public static void main(String[] args) {
 
         Task01.MergeSortMain(args);
+        Task02.RemoveEvenNumbers(args);
     }
 }
