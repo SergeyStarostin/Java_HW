@@ -1,13 +1,13 @@
 import java.util.Scanner;
-
+import PyramidSorting.pyramid;
 import PhoneBookSours.phoneBook;
 
 public class Main {
     public static void main(String[] args)  
-    
     {
         try (Scanner in = new Scanner(System.in)) {
             System.out.println("1) Сортировка в телефонной книге");
+            System.out.println("2) Реализация пирамидальной сортировки (HeapSort)");
 
             System.out.print("Ввыедите номер задачи: ");
             int tasks = in.nextInt();
@@ -31,7 +31,21 @@ public class Main {
    
                 phonebook.printSortContacts();
                 break;
+
+                case 2:
+                
+                int [] array = new int[] {45, 239, 5, 8869, 786, 14, 45};
+                int n = array.length;
+                System.out.println("Заданный массив:");
+                for (int i = 0; i < n; ++i)
+                    System.out.println(array[i]);
+                                
+                pyramid.sort(array);
+                System.out.println("Отсортированный массив:");
+                for (int i = 0; i < n; ++i)
+                    System.out.println(array[i]);
+                break;
             }
         }
-    } 
+    }
 }
