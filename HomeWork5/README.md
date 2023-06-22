@@ -1,18 +1,9 @@
-## Getting Started
+# Задание
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## 1) Реализуйте структуру телефонной книги с помощью HashMap. Программа также должна учитывать, что во входной структуре будут повторяющиеся имена с разными телефонами, их необходимо считать, как одного человека с разными телефонами. Вывод должен быть отсортирован по убыванию числа телефонов.(можно выводить без сортировки, но обязательно в отдельном методе)
 
-## Folder Structure
+## 2) Реализовать алгоритм пирамидальной сортировки (HeapSort)(найти метод в Интернете и включить в проект)
 
-The workspace contains two folders by default, where:
+## 3) На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 4) Шахматную доску размером NxN обойти конём так, чтобы фигура в каждой клетке была строго один раз
