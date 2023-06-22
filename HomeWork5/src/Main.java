@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 import PhoneBookSours.phoneBook;
-//import Queen.EightQueens;
-//import KnightMove.Ktour;
-
-//import static HeapSortTask.SortPyramidal.sort;
 
 public class Main {
     public static void main(String[] args)  
