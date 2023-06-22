@@ -2,6 +2,9 @@ package PyramidSorting;
 
 public class pyramid 
 {
+/*
+2) Реализовать алгоритм пирамидальной сортировки (HeapSort)(найти метод в Интернете и включить в проект).
+ */
     public static void sort(int[] array) 
     {
         int size = array.length;

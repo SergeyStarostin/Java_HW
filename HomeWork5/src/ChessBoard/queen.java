@@ -4,6 +4,9 @@ import java.lang.Math;
 
 public class queen 
 {
+/*
+3) На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга.
+ */
     static final int chessboardSize = 8;
     static int[] queens = new int[chessboardSize];
     static int solutionCounter = 0;
