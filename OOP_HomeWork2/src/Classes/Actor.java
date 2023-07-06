@@ -1,11 +1,12 @@
 package Classes;
 
 import Interfaces.iActorBehaviour;
+import Interfaces.iReturnOrder;
 
 /**
  * Абстрактный базовый класс для клиентов.
  */
-public abstract class Actor implements iActorBehaviour {
+public abstract class Actor implements iActorBehaviour, iReturnOrder {
 
     /**
      * Имя клиента.
@@ -21,9 +22,17 @@ public abstract class Actor implements iActorBehaviour {
      * Флаг, указывающий, может ли клиент осуществлять заказы.
      */
     protected boolean isMakeOrder;
+    /**
+     * Флаг, указывающий, может ли клиент осуществлять возврат заказов.
+     */
+    protected boolean isMakeReturnOrder;
+    /**
+     * Флаг, указывающий на возможность вернуть оплату заказа.
+     */
+    protected boolean isMakePaid;
 
     /**
-     * Конструктор класса клиента.
+     * Конструктор класса Клиент.
      *
      * @param name Имя клиента.
      */
@@ -32,7 +41,7 @@ public abstract class Actor implements iActorBehaviour {
     }
 
     /**
-     * Абстрактный метод для получения имени клиента.
+     * Абстрактный метод для получения имени Клиента.
      *
      * @return Имя клиента.
      */

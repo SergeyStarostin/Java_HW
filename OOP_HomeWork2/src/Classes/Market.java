@@ -9,7 +9,15 @@ import Interfaces.iMarketBehaviour;
 import Interfaces.iQueueBehaviour;
 
 public class Market implements iMarketBehaviour, iQueueBehaviour {
+
+    /**
+     * Файл для записи лога работы магазина
+     */
     private FileWriter logFile;
+
+    /**
+     * Очередь клиентов
+     */
     private List<iActorBehaviour> queue;
 
     /**
@@ -22,14 +30,20 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
      */
     private int promotionalClientCount;
 
+    private List<Actor> visitedActors; // Список посетивших магазин клиентов
+    private List<Actor> successfulPurchaseActors; // Список успешно купивших товар клиентов
+
     /**
-     * Конструктор инициализирует список очереди и создает файл для записи лога
-     * работы магазина.
+     * Конструктор класса Market.
+     * Инициализирует список очереди, и создает файл для записи лога работы
+     * магазина.
      */
     public Market() {
         this.queue = new ArrayList<>();
         this.maxPromotionalClientCount = 5;
         this.promotionalClientCount = 0;
+        this.visitedActors = new ArrayList<>();
+        this.successfulPurchaseActors = new ArrayList<>();
 
         // Создание файла для записи лога работы магазина
         try {
@@ -39,6 +53,11 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         }
     }
 
+    /**
+     * Метод для добавления клиента в магазин.
+     *
+     * @param actor Клиент, реализующий интерфейс iActorBehaviour.
+     */
     @Override
     public void acceptToMarket(iActorBehaviour actor) {
         System.out.println(actor.getActor().getName() + " (клиент пришел в магазин)");
@@ -53,20 +72,21 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         takeInQueue(actor);
     }
 
+    /**
+     * Метод для добавления клиента в очередь.
+     *
+     * @param actor Клиент, реализующий интерфейс iActorBehaviour.
+     */
     @Override
     public void takeInQueue(iActorBehaviour actor) {
         this.queue.add(actor);
         System.out.println(actor.getActor().getName() + " (клиент добавлен в очередь)");
     }
 
-    @Override
-    public void releaseFromMarket(List<Actor> actors) {
-        for (Actor actor : actors) {
-            System.out.println(actor.getName() + " (клиент вышел из магазина)");
-            queue.remove(actor);
-        }
-    }
-
+    /**
+     * Метод для обновления состояния магазина.
+     * Вызывает методы takeOrder(), giveOrder() и releaseFromQueue().
+     */
     @Override
     public void update() {
         takeOrder();
@@ -74,6 +94,28 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         releaseFromQueue();
     }
 
+    /**
+     * Метод для принятия заказа от клиента.
+     */
+    @Override
+    public void takeOrder() {
+        for (iActorBehaviour actor : queue) {
+            if (!actor.isMakeOrder()) {
+                actor.setMakeOrder(true);
+                System.out.println(actor.getActor().getName() + " (у клиента приняли заказ)");
+                try {
+                    logFile.write(actor.getActor().getName() + " (клиент сделал заказ товара)\n");
+                    logFile.flush();
+                } catch (IOException e) {
+                    System.out.println("Ошибка записи в файл лога работы магазина: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * Метод для выдачи заказа клиенту.
+     */
     @Override
     public void giveOrder() {
         for (iActorBehaviour actor : queue) {
@@ -96,24 +138,29 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         releaseFromMarket(releaseActors);
     }
 
+    /**
+     * Метод для освобождения клиентов из магазина.
+     *
+     * @param actors Список клиентов, которых необходимо освободить.
+     */
     @Override
-    public void takeOrder() {
-        for (iActorBehaviour actor : queue) {
-            if (!actor.isMakeOrder()) {
-                actor.setMakeOrder(true);
-                System.out.println(actor.getActor().getName() + " (клиент сделал заказ)");
-                try {
-                    logFile.write(actor.getActor().getName() + " (приобрел товар)\n");
-                    logFile.flush();
-                } catch (IOException e) {
-                    System.out.println("Ошибка записи в файл лога работы магазина: " + e.getMessage());
-                }
+    public void releaseFromMarket(List<Actor> actors) {
+        for (Actor actor : actors) {
+            System.out.println(actor.getName() + " (клиент вышел из магазина)");
+            queue.remove(actor);
+            successfulPurchaseActors.add(actor);
+            try {
+                logFile.write(actor.getName() + " (успешно приобрел товар)\n");
+                logFile.flush();
+            } catch (IOException e) {
+                System.out.println("Ошибка при записи в файл лога работы магазина: " + e.getMessage());
             }
         }
     }
 
     /**
      * Метод для закрытия файла лога.
+     * Закрывает файл, используемый для записи лога работы магазина.
      */
     public void closeLogFile() {
         try {

@@ -122,4 +122,28 @@ public class PromotionalClient extends Actor {
         // Логика возврата заказа клиентом
         market.acceptToMarket(this);
     }
+
+    @Override
+    public void setMakeReturnOrder(boolean makeReturnOrder) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'setMakeReturnOrder'");
+    }
+
+    @Override
+    public void setMakePaid(boolean makePaid) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'setMakePaid'");
+    }
+
+    @Override
+    public boolean isMakeReturnOrder() {
+
+        throw new UnsupportedOperationException("Unimplemented method 'isMakeReturnOrder'");
+    }
+
+    @Override
+    public boolean isMakePaid() {
+
+        throw new UnsupportedOperationException("Unimplemented method 'isMakePaid'");
+    }
 }
