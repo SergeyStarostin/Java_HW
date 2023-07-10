@@ -30,7 +30,6 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
      */
     private int promotionalClientCount;
 
-    private List<Actor> visitedActors; // Список посетивших магазин клиентов
     private List<Actor> successfulPurchaseActors; // Список успешно купивших товар клиентов
 
     /**
@@ -42,7 +41,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         this.queue = new ArrayList<>();
         this.maxPromotionalClientCount = 5;
         this.promotionalClientCount = 0;
-        this.visitedActors = new ArrayList<>();
+        new ArrayList<>();
         this.successfulPurchaseActors = new ArrayList<>();
 
         // Создание файла для записи лога работы магазина
