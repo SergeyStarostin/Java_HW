@@ -9,7 +9,7 @@ import Calculator.Exeptions.InvalidInputException;
  * арифметические операции
  * (+, -, *, /, возведение в степень) над двумя введенными числами).
  */
-public class Calculator {
+public class runCalc {
 
     /**
      * Главный метод runCalc класса Calculator запрашивает у пользователя два числа

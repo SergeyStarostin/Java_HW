@@ -8,7 +8,7 @@ import Calculator.Exeptions.InvalidInputException;
 public class PowerCalculator {
 
     /**
-     * PowerCalculator вычисляет значение степени для основания и показателя
+     * класс PowerCalculator вычисляет значение степени для основания и показателя
      * степени, переданных в качестве аргументов.
      * Если введено некорректное основание (ноль) и отрицательная степень,
      * выбрасывается исключение InvalidInputException.
